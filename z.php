@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Student Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  .koo
+{
+  background-color: #f8d7da;
+  text-align:center; 
+  size:20px; 
+  font-size: 150%
+}
+</style>
 </head>
 <body>
+<div class="container">
+<h1 style="text-align:center;color:#0066cc"> STUDENT DASHBOARD </h1>
+<?php
+echo '<h1 style="text-align:center;color:#0066cc">';
+ printf("Welcome %s",$_COOKIE["name"]); echo '</h1>';
+
+?>
     <!--TABLE OF NGOs REGISTERED-->
+    <div class="alert alert-danger">
     <?php
-        $x='Smile Foundation';
+        //$x='Smile Foundation';
         $y=$_COOKIE["name"];
         $conn = mysqli_connect("localhost", "root", "", "ngo");
         if (!$conn){
@@ -33,11 +57,11 @@
         for ($row_num = 0; $row_num < $num_rows; $row_num++) {
             if($row_num%2==0)
             {
-                echo '<tr bgcolor="#037682">';
+                echo '<tr bgcolor="#d1ecf1">';
             }
             else
             {
-                echo '<tr bgcolor="#2fced6">';
+                echo '<tr bgcolor="#fff3cd">';
             }
         $values = array_values($row);
         for ($index = 0; $index < $num_fields; $index++) {
@@ -53,11 +77,11 @@
         }
         print "</table>";
    ?>
-
+</div>
+<div class="alert alert-info">
    <!--FORM TO PICK NGO-->
    <h2>Register for an NGO</h2>
 
-<p>You can preselect an option with the selected attribute:</p>
 
 
 <form action = "http://localhost/w.php" method = "post" style="font-family: Comfortaa; font-size: 110%; letter-spacing: 1.5px;">
@@ -74,7 +98,7 @@
      </table>
     </div>
 </form>
-
+</div>
 <!--<form action="http://localhost/w.php">
   <label for="cars">Choose a car:</label>
   <select id="cars" name="cars">
@@ -94,5 +118,6 @@
        </tr>
     </table>
 </form>-->
+</div>
 </body>
 </html> 
